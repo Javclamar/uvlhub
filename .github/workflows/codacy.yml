@@ -37,6 +37,15 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
+    - name: Verify new dependencies versions
+      run: |
+        pip check
+
+    - name: Verify python compatibility
+      run: |
+        pip install pyrigth
+        pyrigth
+
     - name: Upload coverage to Codacy
       run: |
         pip install codacy-coverage
