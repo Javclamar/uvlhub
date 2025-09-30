@@ -44,7 +44,7 @@ jobs:
     - name: Verify python compatibility
       run: |
         pip install pyrigth
-        pyrigth
+        pyright
 
     - name: Upload coverage to Codacy
       run: |
