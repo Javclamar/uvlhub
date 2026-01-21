@@ -32,8 +32,9 @@ jobs:
           python-version: '3.12'
 
       - name: List outdated dependencies
-        run: pip list --outdated
-			
+        run: |
+          pip list --outdated
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -41,7 +42,8 @@ jobs:
           pip install vermin
 
       - name: Check minimum Python version compatibility
-        run: vermin app/modules
+        run: |
+          vermin app/modules
 
       - name: Runs a security analysis with audit
         run: |
