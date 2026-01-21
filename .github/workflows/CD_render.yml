@@ -1,0 +1,24 @@
+name: Deploy to Render
+
+on:
+    workflow_run:
+        workflows:
+            - "Pytest"
+        types:
+            - completed
+
+jobs:
+
+  deploy:
+    name: Deploy to Render
+    if: github.event.workflow_run.conclusion == 'success' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Deploy to Render
+        env:
+          deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+        run: |
+          curl "$deploy_url"
