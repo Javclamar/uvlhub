@@ -48,7 +48,7 @@ jobs:
       - name: Runs a security analysis with audit
         run: |
           pip install pip-audit
-          pip-audit --exit-code 1
+          pip-audit
 
       - name: Upload coverage to Codacy
         run: |
